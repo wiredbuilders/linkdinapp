@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate professional LinkedIn comments with different tones using AI">
+  <meta name="keywords" content="LinkedIn, comments, AI, generator, professional">
+  <meta name="author" content="LinkedIn Comment Generator">
+  <title>LinkedIn Comment Generator</title>
+  
+  <!-- Include the CSS -->
+  <link rel="stylesheet" href="./assets/index.css">
+  
+  <!-- Include application icon -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.ico">
+  
+  <style>
+    /* Extra responsive styles */
+    @media (max-width: 640px) {
+      .sm-stack {
+        flex-direction: column !important;
+      }
+      .sm-full {
+        width: 100% !important;
+      }
+      .sm-my-2 {
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+      .sm-text-sm {
+        font-size: 0.875rem !important;
+      }
+    }
+    
+    /* Loading indicator styles */
+    .static-loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.75);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    .static-loading.hidden {
+      display: none;
+    }
+    
+    .static-spinner {
+      border: 4px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top: 4px solid #3498db;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Static build loading indicator -->
+  <div id="static-loading" class="static-loading">
+    <div class="static-spinner"></div>
+    <h2>Loading LinkedIn Comment Generator</h2>
+    <p>Static version - requires DeepSeek API key in Settings</p>
+  </div>
+  
+  <div id="root"></div>
+  
+  <!-- Include the JavaScript bundle -->
+  <script type="module" src="./assets/index.js"></script>
+  
+  <!-- Add static detection script -->
+  <script>
+    // Set a flag to indicate this is a static build
+    window.IS_STATIC_BUILD = true;
+    
+    // Hide loading screen when app is ready
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const loading = document.getElementById('static-loading');
+        if (loading) {
+          loading.classList.add('hidden');
+        }
+      }, 1500);
+    });
+    
+    // Set up DeepSeek API integration detection
+    window.checkDeepSeekAPI = function() {
+      const apiKey = localStorage.getItem('deepseek_api_key');
+      if (!apiKey) {
+        console.warn('No DeepSeek API key found. Please set one in the Settings page.');
+        
+        // Display a notification if needed
+        if (typeof window.showApiKeyNotification === 'function') {
+          window.showApiKeyNotification();
+        }
+        return false;
+      }
+      return true;
+    };
+    
+    // Run API check on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      window.checkDeepSeekAPI();
+    });
+  </script>
+</body>
+</html>

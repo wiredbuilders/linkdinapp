@@ -1,0 +1,29 @@
+# LinkedIn Comment Generator - Static Version Instructions
+
+## Setup & Installation
+1. Extract all files from the ZIP to a local folder
+2. Open index.html in a modern browser (Chrome, Firefox, Safari or Edge)
+3. Go to the Settings page and add your DeepSeek API key
+4. You're all set! The app will work offline once you set the API key
+
+## How to Use
+1. Enter LinkedIn post content (paste directly, extract from URL or use OCR from screenshot)
+2. Select your preferred tone (professional, friendly, supportive, etc.)
+3. Click "Generate Comments" to create AI-powered LinkedIn comments
+4. Save your favorite comments to reuse later
+
+## New Features
+- Fast comment generation with optimized animations
+- Immediate placeholder comments appear while real ones load
+- Streamlined loading experience similar to ChatGPT
+- Improved performance for better user experience
+
+## Note
+This static version uses browser localStorage to save comments and settings, so they'll persist across sessions on the same device.
+
+## Troubleshooting
+- If comments aren't generating, ensure your DeepSeek API key is valid in Settings
+- For best results, provide detailed LinkedIn posts
+- Clear browser cache if you encounter any issues
+
+Enjoy your LinkedIn Comment Generator!
